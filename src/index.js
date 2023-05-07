@@ -6,7 +6,7 @@ const { secret } = require("./config/config");
 app.use(express.json());
 
 app.get("/", (req, res) => {
-    res.send({message: "Api ok"})
+    res.send({message: "Api ok"});
 })
 
 const verifyToken = (req, res, next) => {
