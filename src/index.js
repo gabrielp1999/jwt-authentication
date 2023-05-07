@@ -9,7 +9,20 @@ app.get("/", (req, res) => {
     res.send({message: "Api ok"})
 })
 
-app.get("/clientes", (req, res) => {
+const verifyToken = (req, res, next) => {
+    const token = req.headers["x-access-token"];
+    jwt.verify(token, secret, (err, decoded) => {
+        if(err){
+            return res.status(401).end();
+        }
+        req.userId = decoded.userId;
+        next();
+    });
+}
+
+
+app.get("/clientes", verifyToken ,(req, res) => {
+    console.log(req.userId + "fez chamada")
     const customers = [
         { id:3, name: "Souza"},
         { id:7, name: "Edilson"}
