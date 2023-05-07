@@ -41,8 +41,4 @@ app.post("/login", (req, res) => {
     return res.status(401).end();
 })
 
-app.post("/logout", (req, res) => {
-    res.end();
-})
-
 app.listen(3001, () => console.log("Server Running 3001"))
