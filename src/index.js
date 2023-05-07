@@ -1,7 +1,7 @@
 const express = require("express")
 const app = express();
 const jwt = require("jsonwebtoken");
-const { secret } = require("./config/config")
+const { secret } = require("./config/config");
 
 app.use(express.json());
 
@@ -22,7 +22,7 @@ const verifyToken = (req, res, next) => {
 
 
 app.get("/clientes", verifyToken ,(req, res) => {
-    console.log(req.userId + "fez chamada")
+    console.log(req.userId + "fez a chamada");
     const customers = [
         { id:3, name: "Souza"},
         { id:7, name: "Edilson"}
