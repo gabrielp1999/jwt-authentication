@@ -1,5 +1,7 @@
 const express = require("express")
 const app = express();
+const jwt = require("jsonwebtoken");
+const { secret } = require("./config/config")
 
 app.use(express.json());
 
@@ -19,10 +21,15 @@ app.get("/clientes", (req, res) => {
 app.post("/login", (req, res) => {
     const { user, password } = req.body;
     if(user === "Souza" && password === "92024080"){
-        return res.end();
+        const token = jwt.sign({userId: 3},secret , { expiresIn: 300 });
+        return res.send({ auth: true, token });
     }
 
     return res.status(401).end();
+})
+
+app.post("/logout", (req, res) => {
+    res.end();
 })
 
 app.listen(3001, () => console.log("Server Running 3001"))

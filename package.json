@@ -20,6 +20,9 @@
   "homepage": "https://github.com/gabrielp1999/jwt-authentication#readme",
   "dependencies": {
     "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0"
+  },
+  "devDependencies": {
     "nodemon": "^2.0.22"
   }
 }
